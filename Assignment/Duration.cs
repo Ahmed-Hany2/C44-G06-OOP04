@@ -6,22 +6,30 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    #region Question (1)
+    #region Question (1, 2)
     public class Duration
     {
         public int Hours { get; set; }
         public int Minutes { get; set; }
         public int Seconds { get; set; }
 
-        public Duration()
+        public Duration(int hours, int minutes, int seconds)
         {
-            Hours = 0;
-            Minutes = 0;
-            Seconds = 0;
+            Hours = hours;
+            Minutes = minutes;
+            Seconds = seconds;
         }
-        public void Display()
+
+        public Duration(int totalSeconds)
         {
-            Console.WriteLine($"Duration: {Hours}:{Minutes}:{Seconds}");
+            Hours = totalSeconds / 3600;
+            Minutes = (totalSeconds % 3600) / 60;
+            Seconds = totalSeconds % 60;
+        }
+        public override string ToString()
+        {
+            string result = $"Hours: {Hours}, Minutes :{Minutes}, Seconds :{Seconds}";
+            return result;
         }
         #endregion
     }
