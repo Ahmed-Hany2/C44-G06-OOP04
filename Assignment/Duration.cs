@@ -32,5 +32,51 @@ namespace Assignment
             return result;
         }
         #endregion
+
+        #region Question (3)
+        public int ToSeconds()
+        {
+            return Hours * 3600 + Minutes * 60 + Seconds;
+        }
+
+        public static Duration operator +(Duration d1, Duration d2)
+        {
+            return new Duration(d1.ToSeconds() + d2.ToSeconds());
+        }
+        public static Duration operator +(Duration d, int seconds)
+        {
+            return new Duration(d.ToSeconds() + seconds);
+        }
+
+        public static Duration operator +(int seconds, Duration d)
+        {
+            return new Duration(d.ToSeconds() + seconds);
+        }
+
+        public static Duration operator -(Duration d1, Duration d2)
+        {
+            return new Duration(d1.ToSeconds() - d2.ToSeconds());
+        }
+
+        public static Duration operator ++(Duration d)
+        {
+            return new Duration(d.ToSeconds() + 60);
+        }
+
+        public static Duration operator --(Duration d)
+        {
+            return new Duration(d.ToSeconds() - 60);
+        }
+
+        public static bool operator >(Duration d1, Duration d2)
+        {
+            return d1.ToSeconds() > d2.ToSeconds();
+        }
+
+        public static bool operator <(Duration d1, Duration d2)
+        {
+            return d1.ToSeconds() < d2.ToSeconds();
+        }
+        #endregion
     }
 }
